@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Digital | Paixão pelo Futebol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+    <header>
+        <nav aria-label="Navegação Principal">
+            <div class="logo">Arena<span>Digital</span></div>
+            <div class="controls">
+                <button id="btn-contrast" aria-label="Alternar Alto Contraste">🌓</button>
+                <button id="btn-increase" aria-label="Aumentar fonte">A+</button>
+                <button id="btn-decrease" aria-label="Diminuir fonte">A-</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title">A Emoção do Futebol em Cada Detalhe</h1>
+                <p>Acompanhe notícias, estatísticas e a história do esporte mais amado do mundo.</p>
+            </div>
+        </section>
+
+        <section class="news-section" aria-labelledby="news-title">
+            <h2 id="news-title">Destaques da Semana</h2>
+            <div id="news-grid" class="grid-container">
+                </div>
+        </section>
+
+        <section class="carousel-container" aria-labelledby="carousel-title">
+            <h2 id="carousel-title">Principais Ligas</h2>
+            <div class="carousel" role="region" aria-roledescription="carousel">
+                <div id="carousel-track" class="carousel-track">
+                    </div>
+                <div class="carousel-nav">
+                    <button id="prev" aria-label="Slide anterior">❮</button>
+                    <button id="next" aria-label="Próximo slide">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" aria-labelledby="faq-title">
+            <h2 id="faq-title">Dúvidas Frequentes</h2>
+            <div id="faq-container">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Arena Digital. Desenvolvido com foco em acessibilidade.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
