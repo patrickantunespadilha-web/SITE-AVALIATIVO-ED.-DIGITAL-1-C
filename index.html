@@ -1,61 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arena Total | O Coração do Futebol</title>
+    <title>Futebol Brasil - Paixão Nacional</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar" aria-label="Menu Principal">
-            <div class="logo">ARENA <span>TOTAL</span></div>
-            <div class="accessibility-controls">
-                <button onclick="changeFontSize('increase')" aria-label="Aumentar fonte">A+</button>
-                <button onclick="changeFontSize('decrease')" aria-label="Diminuir fonte">A-</button>
-                <button onclick="toggleContrast()" aria-label="Alternar Alto Contraste">
-                    <span class="icon">◐</span>
-                </button>
-            </div>
+    <!-- Botões de Acessibilidade -->
+    <div class="accessibility-controls" role="region" aria-label="Controles de acessibilidade">
+        <button id="font-smaller" class="accessibility-btn" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="font-larger" class="accessibility-btn" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="high-contrast" class="accessibility-btn" aria-label="Ativar alto contraste" aria-pressed="false">Alto Contraste</button>
+    </div>
+
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Navegação principal">
+            <div class="nav-brand">⚽ Futebol Brasil</div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" role="menuitem" class="nav-link">Início</a></li>
+                <li role="none"><a href="#times" role="menuitem" class="nav-link">Times</a></li>
+                <li role="none"><a href="#jogadores" role="menuitem" class="nav-link">Jogadores</a></li>
+                <li role="none"><a href="#noticias" role="menuitem" class="nav-link">Notícias</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
-    <main>
-        <section class="hero reveal" id="inicio">
+    <main role="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero reveal" role="region" aria-label="Seção principal">
             <div class="hero-content">
-                <h1>A Paixão que Une o Mundo</h1>
-                <p>Acompanhe estatísticas, histórias e a emoção do futebol em um só lugar.</p>
-                <a href="#noticias" class="btn-primary">Ver Últimas Notícias</a>
+                <h1 class="hero-title">A Paixão do Brasil pelo Futebol</h1>
+                <p class="hero-subtitle">O esporte que une milhões de corações em cada jogada</p>
+                <button class="cta-button" onclick="scrollToSection('times')">Conheça os Times</button>
             </div>
         </section>
 
-        <section class="news-section reveal" id="noticias">
-            <h2>Destaques da Rodada</h2>
-            <div id="news-grid" class="grid-container">
-                </div>
-        </section>
-
-        <section class="carousel-section reveal" aria-labelledby="carousel-title">
-            <h2 id="carousel-title">Templos do Futebol</h2>
-            <div class="carousel-container">
-                <div class="carousel-track" id="stadium-carousel">
-                    </div>
-                <div class="carousel-nav">
-                    <button id="prevBtn" aria-label="Slide anterior">❮</button>
-                    <button id="nextBtn" aria-label="Próximo slide">❯</button>
-                </div>
+        <!-- Times Section com Abas -->
+        <section id="times" class="section reveal" role="region" aria-label="Principais times brasileiros">
+            <h2 class="section-title">Clubes Icônicos</h2>
+            <div class="tabs-container" role="tablist" aria-label="Aba dos clubes">
+                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab1" id="tab-btn-1">Brasileirão</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab2" id="tab-btn-2" tabindex="-1">Libertadores</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab3" id="tab-btn-3" tabindex="-1">Sul-Americanos</button>
+            </div>
+            
+            <div class="tab-content active" role="tabpanel" id="tab1" aria-labelledby="tab-btn-1">
+                <div class="clubs-grid" id="clubs-grid"></div>
+            </div>
+            <div class="tab-content" role="tabpanel" id="tab2" aria-labelledby="tab-btn-2" hidden>
+                <p>Conteúdo Libertadores será renderizado dinamicamente</p>
+            </div>
+            <div class="tab-content" role="tabpanel" id="tab3" aria-labelledby="tab-btn-3" hidden>
+                <p>Conteúdo Sul-Americanos será renderizado dinamicamente</p>
             </div>
         </section>
 
-        <section class="faq-section reveal">
-            <h2>Dúvidas Frequentes</h2>
-            <div id="faq-container" class="accordion">
-                </div>
+        <!-- Jogadores Section com Carrossel -->
+        <section id="jogadores" class="section reveal" role="region" aria-label="Melhores jogadores">
+            <h2 class="section-title">Estrelas do Futebol</h2>
+            <div class="carousel-container" role="region" aria-label="Carrossel de jogadores">
+                <button class="carousel-prev" aria-label="Jogador anterior">‹</button>
+                <div class="carousel-track" id="carousel-track"></div>
+                <button class="carousel-next" aria-label="Próximo jogador">›</button>
+                <div class="carousel-dots" id="carousel-dots" aria-label="Indicadores do carrossel"></div>
+            </div>
+        </section>
+
+        <!-- Notícias Section com Acordeão -->
+        <section id="noticias" class="section reveal" role="region" aria-label="Últimas notícias">
+            <h2 class="section-title">Últimas Notícias</h2>
+            <div class="accordion-container" id="news-accordion"></div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Arena Total. Desenvolvido com foco em acessibilidade.</p>
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; 2026 Futebol Brasil. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#privacidade">Privacidade</a>
+                <a href="#termos">Termos</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
